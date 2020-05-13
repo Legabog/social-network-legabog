@@ -1,0 +1,33 @@
+.item {
+  padding: 10px;
+  
+}
+
+.likes {
+  padding: 10px;
+}
+
+.likes i {
+  color: red;
+  font-size: 130%;
+}
+
+.likes span {
+  color: red;
+  font-size: 130%;
+}
+
+.item img {
+  width: 50px;
+  height: 50px;
+  border-radius: 30px;
+}
+
+.description {
+  display: flex;
+}
+
+.description h6{
+  margin-left: 10px;
+  margin-top: 10px;
+}

@@ -1,0 +1,40 @@
+.nav {
+  grid-area: n;
+  background-color: burlywood;
+  padding: 20px;
+  display: block;
+}
+
+.nav li {
+  list-style: none;
+}
+
+.list {
+  margin-top: 20px;
+}
+
+.list li{
+  padding: 3px;
+}
+
+.nav span {
+  margin-left: 10px;
+  font-size: 150%;
+  /* border: 1px solid #ccc; */
+  border-radius: 10px;
+}
+
+.nav li:hover {
+  background-color: rgb(185, 175, 240);
+  border-radius: 10px;
+
+}
+
+.item a {
+  color:white;
+  text-decoration: none;
+}
+
+.item a.active {
+  color: rgb(64, 48, 151);
+}

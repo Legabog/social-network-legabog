@@ -1,0 +1,51 @@
+{
+  "name": "react-practice-v2-legabog",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@material-ui/core": "^4.9.9",
+    "@material-ui/lab": "^4.0.0-alpha.48",
+    "@oryono/react-paginator": "^0.2.5",
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.3.2",
+    "@testing-library/user-event": "^7.1.2",
+    "antd": "^4.1.5",
+    "axios": "^0.19.2",
+    "materialize-css": "^1.0.0-rc.2",
+    "node": "^14.0.0",
+    "puppeteer": "^3.0.1",
+    "puppeteer-core": "^3.0.1",
+    "react": "^16.13.0",
+    "react-dom": "^16.13.0",
+    "react-paginator": "0.0.5",
+    "react-redux": "^7.2.0",
+    "react-router-dom": "^5.1.2",
+    "react-scripts": "3.4.1",
+    "redux": "^4.0.5",
+    "redux-form": "^8.3.5",
+    "redux-thunk": "^2.3.0",
+    "unirest": "^0.6.0",
+    "ws": "^7.2.3"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}

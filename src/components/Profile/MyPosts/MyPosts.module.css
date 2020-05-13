@@ -1,0 +1,25 @@
+.postsBlock {
+    display: inline-block;
+    width: 340px;
+    border-radius: 10px;
+    background-color: #fff;
+    margin-top: -180px;
+    margin-left: 10px;
+    margin-bottom: 20px;
+}
+
+.postsBlock h2 {
+    text-align: center;
+}
+
+.inputMessage {
+    padding: 10px;
+}
+
+.posts {
+    margin-top: 10px;
+}
+
+/* .field {
+    width: px;
+} */
