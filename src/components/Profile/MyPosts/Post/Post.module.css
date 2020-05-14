@@ -8,9 +8,16 @@
 }
 
 .likes i {
-  color: red;
+  color: rgb(255, 166, 166);;
   font-size: 130%;
 }
+
+.likesCount i:hover {
+  cursor: pointer;
+  color: rgb(255, 0, 0);
+  font-size: 160%;
+}
+
 
 .likes span {
   color: red;

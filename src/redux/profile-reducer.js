@@ -3,14 +3,13 @@ import { userAPI } from "../api/api";
 const ADD_POST = "ADD-POST";
 const SET_USER_PROFILE = "SET_USER_PROFILE";
 const SET_PROFILE_STATUS = "SET_PROFILE_STATUS";
-const CHANGE_STATUS_HANDLER = "CHANGE_STATUS_HANDLER"
+const CHANGE_STATUS_HANDLER = "CHANGE_STATUS_HANDLER";
 
 let initialState = {
-  PostsData: [
-    
-  ],
+  PostsData: [],
   profile: null,
-  profilePhoto: "https://avatars0.githubusercontent.com/u/44378669?s=460&u=079ef1f1a38cec38b2b6ba37b9f71cfccc88ce1f&v=4",
+  profilePhoto:
+    "https://avatars0.githubusercontent.com/u/44378669?s=460&u=079ef1f1a38cec38b2b6ba37b9f71cfccc88ce1f&v=4",
   profileStatus: "Change status",
 };
 
@@ -20,7 +19,6 @@ const profileReducer = (state = initialState, action) => {
       let newPost = {
         id: Math.random(),
         message: action.addMyPostForm,
-        likes: 0,
       };
       let stateCopy = {
         ...state,
@@ -28,6 +26,8 @@ const profileReducer = (state = initialState, action) => {
       };
       return stateCopy;
     }
+
+
     case SET_USER_PROFILE: {
       return {
         ...state,
@@ -45,14 +45,16 @@ const profileReducer = (state = initialState, action) => {
     case CHANGE_STATUS_HANDLER: {
       return {
         ...state,
-        profileStatus: action.status
-      }
+        profileStatus: action.status,
+      };
     }
+
 
     default:
       return state;
   }
 };
+
 
 export const addPostActionCreator = (addMyPostForm) => {
   return {
@@ -60,7 +62,6 @@ export const addPostActionCreator = (addMyPostForm) => {
     addMyPostForm
   };
 };
-
 
 export const setUserProfile = (profile) => {
   return {
@@ -79,9 +80,10 @@ export const setProfileStatus = (status) => {
 export const changeStatusHandler = (status) => {
   return {
     type: CHANGE_STATUS_HANDLER,
-    status
-  }
-}
+    status,
+  };
+};
+
 
 export const getProfile = (userId) => {
   return (dispatch) =>
@@ -90,14 +92,12 @@ export const getProfile = (userId) => {
     });
 };
 
-
 export const getProfileStatus = (userId) => {
   return (dispatch) =>
     userAPI.getProfileStatus(userId).then((response) => {
       dispatch(setProfileStatus(response));
     });
 };
-
 
 export const updateProfileStatus = (status) => {
   return (dispatch) => {

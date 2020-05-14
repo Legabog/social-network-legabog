@@ -5,7 +5,7 @@ import {AddMyPostFormRedux} from "./AddMyPostRedux"
 
 const MyPosts = (props) => {
   let PostsElements = props.PostsData.map((ell) => (
-    <Post key={ell.id} message={ell.message} likes={ell.likes} />
+    <Post key={ell.id} message={ell.message} likes={ell.likes} {...props}/>
   ));
 
   const AddMyPost = (values) => {
@@ -16,9 +16,9 @@ const MyPosts = (props) => {
     <div className={classes.postsBlock}>
       <h2>Posts</h2>
       <div className={classes.inputMessage}>
-        <AddMyPostFormRedux onSubmit={AddMyPost} />
+        <AddMyPostFormRedux onSubmit={AddMyPost}/>
       </div>
-      <div className={classes.posts}>{PostsElements}</div>
+      <div className={classes.posts}>{PostsElements }</div>
     </div>
   );
 };

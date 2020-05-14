@@ -3,9 +3,10 @@ import { Field, reduxForm } from "redux-form";
 import classes from "./MyPosts.module.css";
 import {
   requiredField,
-  maxLength20,
+  maxLength100,
 } from "../../../utils/validators/validators";
 import { Textarea } from "../../common/FormsControls/FormsControls";
+import Emoji from "../../common/EmojiList/EmojiList";
 
 
 const AddMyPostForm = (props) => {
@@ -20,10 +21,13 @@ const AddMyPostForm = (props) => {
             }}
             name={"addMyPostForm"}
             component={Textarea}
-            validate={[requiredField, maxLength20]}
+            validate={[requiredField, maxLength100]}
             placeholder={"Post new message"}
           />
         </div>
+        <i className="far fa-smile" style={{fontSize:"2rem"}}></i>
+        <Emoji {...props}/>
+        <button onClick={() => props.value += 1 } >Emoji</button>
         <div className={classes.addButton}>
           <button
             className="btn btn-primary btn-sm"

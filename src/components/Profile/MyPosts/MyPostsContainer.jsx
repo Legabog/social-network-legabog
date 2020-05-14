@@ -1,6 +1,6 @@
 import React from 'react'
 import {
-  addPostActionCreator
+  addPostActionCreator,
 } from "../../../redux/profile-reducer";
 import MyPosts from "./MyPosts";
 import { connect } from "react-redux";
@@ -13,10 +13,10 @@ class MyPostsContainer extends React.Component {
 let mapStateToProps = state => {
   return {
     PostsData: state.profileReducer.PostsData,
-    newPostText: state.profileReducer.newPostText
+    newPostText: state.profileReducer.newPostText,
   }
 }
 
 export default connect(mapStateToProps, { 
-  addPostActionCreator
+  addPostActionCreator,
 })(MyPostsContainer);
