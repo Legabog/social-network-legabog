@@ -2,7 +2,7 @@ import React from "react";
 import Profile from "./Profile";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
-import { getProfile, getProfileStatus, updateProfileStatus, changeStatusHandler } from "../../redux/profile-reducer";
+import { getProfile, getProfileStatus, getCaptcha, updateProfileStatus, changeStatusHandler } from "../../redux/profile-reducer";
 import { withAuthRedirect } from "../../hoc/withAuthRedirect";
 import { compose } from "redux";
 
@@ -27,7 +27,10 @@ class ProfileContainer extends React.Component {
 
 let mapStateToProps = (state) => ({
   profile: state.profileReducer.profile,
-  status: state.profileReducer.profileStatus
+  status: state.profileReducer.profileStatus,
+  authrizedUserId: state.authReducer.userId,
+  isAuth: state.authReducer.isAuth,
+  captcha: state.profileReducer.captcha
 });
 
 export default compose(
@@ -35,7 +38,8 @@ export default compose(
     getProfile,
     getProfileStatus,
     updateProfileStatus,
-    changeStatusHandler }),
+    changeStatusHandler,
+    getCaptcha }),
   withRouter,
   withAuthRedirect
 )(ProfileContainer);

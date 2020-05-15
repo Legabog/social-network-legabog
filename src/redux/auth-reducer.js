@@ -1,13 +1,15 @@
 import { userAPI } from "../api/api";
-// import { stopSubmit } from "redux-form";
+import { stopSubmit } from "redux-form";
 
 const SET_USER_DATA = "SET_USER_DATA";
+const GET_CAPTCHA_URL_SUCCESS = "GET_CAPTCHA_URL_SUCCESS";
 
 let initialState = {
   userId: null,
   email: null,
   login: null,
   isAuth: false,
+  captchaUrl: null,
 };
 
 const authReducer = (state = initialState, action) => {
@@ -16,6 +18,12 @@ const authReducer = (state = initialState, action) => {
       return {
         ...state,
         ...action.payload,
+      };
+
+    case GET_CAPTCHA_URL_SUCCESS:
+      return {
+        ...state,
+        captchaUrl: action.captchaUrl,
       };
 
     default:
@@ -30,6 +38,13 @@ export const setAuthUserData = (userId, email, login, isAuth) => {
   };
 };
 
+export const getCaptchaUrlSuccess = (captchaUrl) => {
+  return {
+    type: GET_CAPTCHA_URL_SUCCESS,
+    captchaUrl,
+  };
+};
+
 export const authMe = () => {
   return (dispatch) => {
     userAPI.authMe().then((response) => {
@@ -41,18 +56,30 @@ export const authMe = () => {
   };
 };
 
-export const login = (email, password, rememberMe) => {
+export const login = (email, password, rememberMe, captcha) => {
   return (dispatch) => {
-    // let action = stopSubmit("login", { _error: "Email is wrong" });
-    // dispatch(action);
-    // return;
-    userAPI.login(email, password, rememberMe).then((response) => {
+    userAPI.login(email, password, rememberMe, captcha).then((response) => {
+      // success, get auth
       if (response.resultCode === 0) {
         dispatch(authMe());
       } else {
+        if (response.resultCode === 10) {
+          dispatch(getCaptchaUrl())
+          dispatch(getCaptchaUrlSuccess(null))
+        }
+        let messages =
+          response.messages.length > 0 ? response.messages[0] : "Some error";
+        dispatch(stopSubmit("login", { _error: messages }));
       }
     });
   };
+};
+
+export const getCaptchaUrl = () => async (dispatch) => {
+  const response = await userAPI.getCaptcha();
+  const captchaUrl = response.url;
+
+  dispatch(getCaptchaUrlSuccess(captchaUrl));
 };
 
 export const logout = () => {

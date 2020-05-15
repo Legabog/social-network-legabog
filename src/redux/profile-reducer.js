@@ -4,6 +4,7 @@ const ADD_POST = "ADD-POST";
 const SET_USER_PROFILE = "SET_USER_PROFILE";
 const SET_PROFILE_STATUS = "SET_PROFILE_STATUS";
 const CHANGE_STATUS_HANDLER = "CHANGE_STATUS_HANDLER";
+const GET_CAPTCHA = "GET_CAPTCHA"
 
 let initialState = {
   PostsData: [],
@@ -11,6 +12,7 @@ let initialState = {
   profilePhoto:
     "https://avatars0.githubusercontent.com/u/44378669?s=460&u=079ef1f1a38cec38b2b6ba37b9f71cfccc88ce1f&v=4",
   profileStatus: "Change status",
+  captcha: ""
 };
 
 const profileReducer = (state = initialState, action) => {
@@ -26,7 +28,6 @@ const profileReducer = (state = initialState, action) => {
       };
       return stateCopy;
     }
-
 
     case SET_USER_PROFILE: {
       return {
@@ -49,12 +50,17 @@ const profileReducer = (state = initialState, action) => {
       };
     }
 
+    case GET_CAPTCHA: {
+      return {
+        ...state,
+        captcha: action.captcha
+      }
+    }
 
     default:
       return state;
   }
 };
-
 
 export const addPostActionCreator = (addMyPostForm) => {
   return {
@@ -84,6 +90,20 @@ export const changeStatusHandler = (status) => {
   };
 };
 
+export const setCaptcha = (captcha) => {
+  return {
+    type: GET_CAPTCHA,
+    captcha
+  }
+}
+
+export const getCaptcha = () => {
+  return (dispatch) => 
+  userAPI.getCaptcha().then(response => {
+    dispatch(setCaptcha(response.url))
+  })
+
+}
 
 export const getProfile = (userId) => {
   return (dispatch) =>

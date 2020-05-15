@@ -7,6 +7,7 @@ import { connect } from "react-redux";
 import { login } from "../.././redux/auth-reducer";
 import { Redirect } from "react-router-dom";
 import Img from "../../assets/images/user.png";
+import cls from "../common/FormsControls/FormsControls.module.css";
 
 const LoginForm = (props) => {
   return (
@@ -41,20 +42,50 @@ const LoginForm = (props) => {
         <Field name={"rememberMe"} type={"checkbox"} component={Input} />
         <p>Remember me</p>
       </div>
-
+      {props.captchaUrl && <img src={props.captchaUrl} />}
+      {props.captchaUrl && (
       <div>
-        
-      </div>
+        <Field
+          name={"captcha"}
+          placeholder={"Symbols from image"}
+          component={Input}
+          validate={[requiredField]}
+          style={{ borderRadius: "10px", fontSize: "130%", padding: "5px" }}
+        />
+        <div className={cls.formSummaryError}>
+          <div>
+            <i className="fas fa-exclamation-triangle"></i>
+            <span>Warning!!!</span>
+          </div>
+          <div>
+            <h3>{props.error}</h3>
+          </div>
+        </div>
 
+      </div>
+        
+        
+      )}
+      {props.error && (
+        <div className={cls.formSummaryError}>
+          <div>
+            <i className="fas fa-exclamation-triangle"></i>
+            <span>Warning!!!</span>
+          </div>
+          <div>
+            <h3>{props.error}</h3>
+          </div>
+        </div>
+      )}
       <button
         style={{
           width: "200px",
           fontSize: "130%",
           borderRadius: "10px",
-          marginTop: "-20px",
+          marginTop: "10px",
           marginBottom: "20px",
           backgroundColor: "#4a76a8",
-          color: "#fff"
+          color: "#fff",
         }}
       >
         Login
@@ -68,8 +99,15 @@ const LoginReduxForm = reduxForm({
 })(LoginForm);
 
 const Login = (props) => {
+  console.log(props)
   const onSubmit = (formData) => {
-    props.login(formData.email, formData.password, formData.rememberMe);
+    props.login(
+      formData.email,
+      formData.password,
+      formData.rememberMe,
+      formData.captcha
+    );
+
   };
 
   if (props.isAuth) {
@@ -84,7 +122,7 @@ const Login = (props) => {
       <div className={classes.img}>
         <img src={Img} alt="description" />
       </div>
-      <LoginReduxForm onSubmit={onSubmit} />
+      <LoginReduxForm onSubmit={onSubmit} captchaUrl={props.captchaUrl} />
     </div>
   );
 };
@@ -92,7 +130,8 @@ const Login = (props) => {
 const mapStateToProps = (state) => {
   return {
     isAuth: state.authReducer.isAuth,
+    captchaUrl: state.authReducer.captchaUrl,
   };
 };
 
-export default connect(mapStateToProps, { login })(Login);
+export default connect(mapStateToProps, { login, })(Login);

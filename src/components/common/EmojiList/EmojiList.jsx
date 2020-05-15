@@ -47,7 +47,7 @@ class Emoji extends React.Component {
       <div style={{fontSize:"2rem"}}>
         <select>
           {this.state.emojilist.map((e) => {
-            return <EmojiItem emoji={String.fromCodePoint(e)} />;
+            return <EmojiItem {...this.props} key={Math.random()} emoji={String.fromCodePoint(e)} />;
           })}
         </select>
       </div>

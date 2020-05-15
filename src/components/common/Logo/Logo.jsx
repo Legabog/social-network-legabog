@@ -9,7 +9,6 @@ const Logo = (props) => {
       <NavLink to={"/"}>
         <img src={logo} alt="description"></img>
       </NavLink>
-
       <div className={classes.logospan}>
         <a href="https://meduza.io/specials/coronavirus">
           <strong>#meduzacorona</strong>
