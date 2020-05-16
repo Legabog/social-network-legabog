@@ -65,7 +65,6 @@ export const login = (email, password, rememberMe, captcha) => {
       } else {
         if (response.resultCode === 10) {
           dispatch(getCaptchaUrl())
-          dispatch(getCaptchaUrlSuccess(null))
         }
         let messages =
           response.messages.length > 0 ? response.messages[0] : "Some error";
@@ -87,6 +86,7 @@ export const logout = () => {
     userAPI.logout().then((response) => {
       if (response.resultCode === 0) {
         dispatch(setAuthUserData(null, null, null, false));
+        dispatch(getCaptchaUrlSuccess(null))
       }
     });
   };

@@ -42,41 +42,37 @@ const LoginForm = (props) => {
         <Field name={"rememberMe"} type={"checkbox"} component={Input} />
         <p>Remember me</p>
       </div>
-      {props.captchaUrl && <img src={props.captchaUrl} />}
-      {props.captchaUrl && (
-      <div>
-        <Field
-          name={"captcha"}
-          placeholder={"Symbols from image"}
-          component={Input}
-          validate={[requiredField]}
-          style={{ borderRadius: "10px", fontSize: "130%", padding: "5px" }}
-        />
-        <div className={cls.formSummaryError}>
-          <div>
-            <i className="fas fa-exclamation-triangle"></i>
-            <span>Warning!!!</span>
-          </div>
-          <div>
-            <h3>{props.error}</h3>
-          </div>
-        </div>
-
-      </div>
-        
-        
-      )}
       {props.error && (
-        <div className={cls.formSummaryError}>
-          <div>
-            <i className="fas fa-exclamation-triangle"></i>
-            <span>Warning!!!</span>
-          </div>
-          <div>
-            <h3>{props.error}</h3>
+        <div>
+          <div className={cls.formSummaryError}>
+            <div>
+              <i className="fas fa-exclamation-triangle"></i>
+              <span>Warning!!!</span>
+            </div>
+            <div>
+              <h3>{props.error}</h3>
+            </div>
           </div>
         </div>
       )}
+
+      {props.captchaUrl && (
+        <div>
+          <div>
+            <img src={props.captchaUrl} alt = "description"/>
+          </div>
+          <div>
+            <Field
+              name={"captcha"}
+              placeholder={"Symbols from image"}
+              component={Input}
+              validate={[requiredField]}
+              style={{ borderRadius: "10px", fontSize: "130%", padding: "5px" }}
+            />
+          </div>
+        </div>
+      )}
+
       <button
         style={{
           width: "200px",
@@ -99,7 +95,6 @@ const LoginReduxForm = reduxForm({
 })(LoginForm);
 
 const Login = (props) => {
-  console.log(props)
   const onSubmit = (formData) => {
     props.login(
       formData.email,
@@ -107,7 +102,6 @@ const Login = (props) => {
       formData.rememberMe,
       formData.captcha
     );
-
   };
 
   if (props.isAuth) {
@@ -134,4 +128,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, { login, })(Login);
+export default connect(mapStateToProps, { login })(Login);

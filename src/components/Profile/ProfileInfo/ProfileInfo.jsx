@@ -119,9 +119,6 @@ const ProfileInfo = (props) => {
               </i>
             </li>
             <hr />
-
-            <img src={props.captcha} ></img>
-            <button onClick={props.getCaptcha}>Click me</button>
           </div>
         </div>
       </div>
