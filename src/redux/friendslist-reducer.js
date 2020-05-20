@@ -9,7 +9,7 @@ let initialState = {
   pageSize: 100,
   totalUsersCount: 0,
   currentPage: 1,
-  isFetching: true,
+  isFetching: false,
 };
 
 const friendslistReducer = (state = initialState, action) => {

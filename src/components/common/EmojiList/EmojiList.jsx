@@ -45,11 +45,11 @@ class Emoji extends React.Component {
   render() {
     return (
       <div style={{fontSize:"2rem"}}>
-        <select>
+        <ul>
           {this.state.emojilist.map((e) => {
             return <EmojiItem {...this.props} key={Math.random()} emoji={String.fromCodePoint(e)} />;
           })}
-        </select>
+        </ul>
       </div>
     );
   }

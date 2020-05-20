@@ -47,7 +47,7 @@ export const getCaptchaUrlSuccess = (captchaUrl) => {
 
 export const authMe = () => {
   return (dispatch) => {
-    userAPI.authMe().then((response) => {
+    return userAPI.authMe().then((response) => {
       if (response.resultCode === 0) {
         let { id, email, login } = response.data;
         dispatch(setAuthUserData(id, email, login, true));

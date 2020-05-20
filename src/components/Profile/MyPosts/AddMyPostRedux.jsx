@@ -23,10 +23,8 @@ const AddMyPostForm = (props) => {
           placeholder={"Post new message"}
         />
       </div>
-      {/* <i className="far fa-smile" style={{ fontSize: "2rem" }}></i>
+      {/* <i className="far fa-smile" style={{ fontSize: "2rem" }} onClick={() => props.onSubmit()}></i>
       <Emoji {...props} />
-      <button>Emoji</button><i className="far fa-smile" style={{ fontSize: "2rem" }}></i> */}
-      {/* <Emoji {...props} />
       <button>Emoji</button> */}
       <div className={classes.addButton}>
         <button

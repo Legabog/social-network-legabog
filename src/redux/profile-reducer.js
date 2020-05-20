@@ -12,7 +12,7 @@ let initialState = {
   profilePhoto:
     "https://avatars0.githubusercontent.com/u/44378669?s=460&u=079ef1f1a38cec38b2b6ba37b9f71cfccc88ce1f&v=4",
   profileStatus: "Change status",
-  captcha: ""
+  captcha: "",
 };
 
 const profileReducer = (state = initialState, action) => {
@@ -20,7 +20,7 @@ const profileReducer = (state = initialState, action) => {
     case ADD_POST: {
       let newPost = {
         id: Math.random(),
-        message: action.addMyPostForm,
+        message: action.text
       };
       let stateCopy = {
         ...state,
@@ -62,10 +62,10 @@ const profileReducer = (state = initialState, action) => {
   }
 };
 
-export const addPostActionCreator = (addMyPostForm) => {
+export const addPostActionCreator = (text) => {
   return {
     type: ADD_POST,
-    addMyPostForm
+    text,
   };
 };
 

@@ -8,6 +8,7 @@ import newsReducer from "./news-reducer";
 import settingsReducer from "./settings-reducer";
 import headerReducer from "./header-reducer";
 import friendslistReducer from "./friendslist-reducer";
+import appReducer from "./app-reducer"
 import thunk from "redux-thunk";
 import { reducer as formReducer } from 'redux-form'
 
@@ -21,7 +22,8 @@ let reducers = combineReducers({
   settingsReducer,
   friendslistReducer,
   headerReducer,
-  form: formReducer
+  form: formReducer,
+  appReducer
 });
 
 let store = createStore(reducers, applyMiddleware(thunk));

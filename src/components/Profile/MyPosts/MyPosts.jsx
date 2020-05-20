@@ -9,7 +9,7 @@ const MyPosts = (props) => {
   ));
 
   const AddMyPost = (values) => {
-    props.addPostActionCreator(values.addMyPostForm);
+    props.addPostActionCreator(values.addMyPostForm, );
   };
 
   return (

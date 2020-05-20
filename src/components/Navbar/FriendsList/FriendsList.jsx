@@ -14,12 +14,7 @@ class FriendsList extends React.Component {
   componentDidMount() {
     this.props.setTotalUsersCountThunk();
     let i = 1;
-    while (
-      i <=
-      Math.ceil(
-        3575 / 100
-      )
-    ) {
+    while (i <= Math.ceil(3575 / 100)) {
       this.props.getFriends(i, 100);
       console.log(i);
       i++;
