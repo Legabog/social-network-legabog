@@ -82,7 +82,7 @@ export const userAPI = {
   getNews(country, category) {
     return axios
       .get(
-        `http://newsapi.org/v2/top-headlines?country=${country}&category=${category}&apiKey=2d0d9cdece874b16b2a7a0ce65513a28`
+        `http://newsapi.org/v2/top-headlines?country=${country}&category=${category}&apiKey=1c08655261a244f09b1812a3dfeb395b`
       )
       .then((response) => {
         return response.data;

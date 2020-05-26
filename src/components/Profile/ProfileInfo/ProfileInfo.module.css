@@ -6,6 +6,7 @@
     border-radius: 10px;
     margin-top: 10px;
     margin-left: 30px;
+    margin-bottom: 20px;
     background-color: #fff;
     /* background-image: url(https://image.freepik.com/free-photo/_1962-1376.jpg); */
 }
@@ -20,6 +21,10 @@
 
 .profile {
     display: flex;
+}
+
+.allProfile {
+    height: auto;    
 }
 
 .headerinfo p{
@@ -72,3 +77,4 @@
     font-size: 110%;
     margin-top: 10px;
 }
+

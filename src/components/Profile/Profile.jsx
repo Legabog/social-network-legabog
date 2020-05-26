@@ -1,8 +1,8 @@
 import React from "react";
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
-import MyPostsContainer from "./MyPosts/MyPostsContainer";
 import classes from "./Profile.module.css";
 import Preloader from ".././common/Preloader/Preloader";
+import MyPostsContainer from "./MyPosts/MyPostsContainer";
 
 const Profile = (props) => {
   if (!props.profile) {
@@ -11,8 +11,13 @@ const Profile = (props) => {
 
   return (
     <div className={classes.profile}>
-      <ProfileInfo {...props} />
-      <MyPostsContainer />
+      <div>
+        <ProfileInfo {...props} />
+      </div>
+
+      <div className={classes.posts}>
+        <MyPostsContainer />
+      </div>
     </div>
   );
 };

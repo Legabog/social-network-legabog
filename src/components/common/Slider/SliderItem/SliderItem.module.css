@@ -1,0 +1,21 @@
+.mainSlider img {
+  max-width: 490px;
+  border-radius: 20px;
+  margin-left: 7px;
+}
+
+.mainSlider i{
+  margin-left: 40px;
+  margin-top: 20px;
+  color: rgb(255, 166, 166);;
+  font-size: 130%;
+}
+
+.mainSlider i:hover {
+  cursor: pointer;
+  color: rgb(255, 0, 0);
+}
+
+.mainSlider span {
+  color: red;
+}

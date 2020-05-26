@@ -1,3 +1,11 @@
 .profile {
     display: inline-block;
+    min-height: 1250px;
 }
+
+.posts {
+    margin-top: -730px;
+    margin-left: 10px;
+    margin-bottom: 30px;
+}
+

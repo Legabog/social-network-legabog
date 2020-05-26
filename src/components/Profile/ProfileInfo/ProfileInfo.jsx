@@ -1,17 +1,17 @@
 import React from "react";
-import s from "./ProfileInfo.module.css";
 import DefaultPhoto from "../../../assets/images/user.png";
 import ProfileStatus from "./ProfileStatus";
 import "antd/dist/antd.css";
 import { Rate } from "antd";
 import classes from "./ProfileInfo.module.css";
+import SimpleSlider from "../../common/Slider/Slider";
 
 const ProfileInfo = (props) => {
   return (
-    <div>
-      <div className={s.profile}>
-        <div className={s.avatarFrame}>
-          <div className={s.avatar}>
+    <div className={classes.allProfile}>
+      <div className={classes.profile}>
+        <div className={classes.avatarFrame}>
+          <div className={classes.avatar}>
             <img
               src={props.profile.photos.large || DefaultPhoto}
               alt="description"
@@ -48,9 +48,9 @@ const ProfileInfo = (props) => {
             <i className="fas fa-cog"></i>
           </button>
         </div>
-        <div className={s.descriptionBlock}>
-          <div className={s.info}>
-            <div className={s.headerinfo}>
+        <div className={classes.descriptionBlock}>
+          <div className={classes.info}>
+            <div className={classes.headerinfo}>
               <h2>
                 <strong>{props.profile.fullName || "Нет информации"}</strong>
               </h2>
@@ -118,6 +118,11 @@ const ProfileInfo = (props) => {
                 <strong>{props.profile.contacts.mainlink || "Нет"}</strong>
               </i>
             </li>
+            <hr />
+            <h4>Photos:</h4>
+            <div className={classes.photos}>
+              <SimpleSlider/>
+            </div>
             <hr />
           </div>
         </div>
