@@ -1,1 +1,15 @@
-/* Not yet */
+.mainMusic {
+    width: 950px;
+    padding: 10px;
+    border-radius: 20px;
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-bottom: 20px;
+    background-color: #fff;
+    border: solid 1px;
+    box-shadow: 2px 2px 2px black;
+}
+
+.player {
+    margin-right: 10px;
+}

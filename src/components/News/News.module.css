@@ -7,6 +7,8 @@
     margin-left: 10px;
     /* margin: 20px; */
     width: 970px;
+    border: solid 1px;
+    box-shadow: 2px 2px 2px black;
 }
 
 
@@ -38,6 +40,8 @@
     width: 560px;
     border-radius: 10px;
     background-color: #fff;
+    border: solid 1px;
+    box-shadow: 2px 2px 2px black;
 }
 
 .optionsTogether {
@@ -52,6 +56,8 @@
     width: 400px;
     border-radius: 10px;
     background-color: #fff;
+    border: solid 1px;
+    box-shadow: 2px 2px 2px black;
 }
 
 .optionstitle {

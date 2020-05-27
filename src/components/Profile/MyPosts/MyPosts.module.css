@@ -4,6 +4,8 @@
     border-radius: 10px;
     background-color: #fff;
     margin-top: 40px;
+    border: solid 1px;
+    box-shadow: 2px 2px 2px black;
     /* margin-bottom: 20px; */
 }
 

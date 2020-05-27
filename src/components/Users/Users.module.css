@@ -75,6 +75,8 @@
   background-color: #fff;
   margin: 10px;  
   margin-left: 70px;
+    border: solid 1px;
+    box-shadow: 2px 2px 2px black;
 }
 
 .userslider {
@@ -90,5 +92,8 @@
   margin: 10px;
   background-color: rgb(148, 194, 221);
   border-radius: 30px;
+    border: solid 1px;
+    box-shadow: 2px 2px 2px black;
+    margin-bottom: 30px;
 }
 
