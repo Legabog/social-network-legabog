@@ -14,6 +14,7 @@ import SettingsContainer from "./components/Settings/SettingsContainer";
 import Login from "./components/Login/Login";
 import { compose } from "redux";
 import Preloader from "./components/common/Preloader/Preloader";
+import MusicList from "./components/Music/MusicList/MusicList";
 
 class App extends React.Component {
   componentDidMount() {
@@ -35,6 +36,7 @@ class App extends React.Component {
             <Route path="/users" render={() => <UsersContainer />} />
             <Route path="/news" component={() => <NewsContainer />} />
             <Route path="/music" component={Music} />
+            <Route exact path="/music-list" component={MusicList} />
             <Route path="/login" component={Login} />
             <Route path="/settings" component={() => <SettingsContainer />} />
           </div>
