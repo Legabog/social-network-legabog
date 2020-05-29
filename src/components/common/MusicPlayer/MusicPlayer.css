@@ -2,11 +2,11 @@
   background-color: #fff;
   padding: 0.5rem;
   margin-top: 15px;
-  margin-left: 20px;
-  border-radius: 20px;
+  margin-left: 15px;
+  border-radius: 10px;
   border: solid 1px;
-  box-shadow: 2px 2px 15px black;
-  /* filter: invert(100%); */
+  box-shadow: 2px 2px 2px black;
+  
 }
 
 #play {

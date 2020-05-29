@@ -5,6 +5,7 @@ import "antd/dist/antd.css";
 import { Rate } from "antd";
 import classes from "./ProfileInfo.module.css";
 import SimpleSlider from "../../common/Slider/Slider";
+import MyPostsContainer from "../MyPosts/MyPostsContainer";
 
 const ProfileInfo = (props) => {
   return (
@@ -47,6 +48,10 @@ const ProfileInfo = (props) => {
           >
             <i className="fas fa-cog"></i>
           </button>
+          <div className={classes.posts}>
+          <MyPostsContainer />
+          </div>
+          
         </div>
         <div className={classes.descriptionBlock}>
           <div className={classes.info}>

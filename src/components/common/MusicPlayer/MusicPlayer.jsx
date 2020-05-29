@@ -73,7 +73,7 @@ class MusicPlayer extends React.Component {
       <div>
         <AudioPlayer
           audioFiles={this.state.tracklist}
-          playerWidth="950px"
+          playerWidth="1010px"
           fontSize="1.5rem"
           iconSize="3.5rem"
         //   rearrange={this.rearrangedPlayer}

@@ -24,12 +24,13 @@ export const SimpleMenu = (props) => {
         aria-controls="simple-menu"
         aria-haspopup="true"
         onClick={handleClick}
+        style={{textTransform: "none", color: "#fff" , transition: "none || none", }}
       >
         <div className={classes.loginblock}>
           <Avatar
             size={32}
             icon={<UserOutlined />}
-            style={{ marginTop: "10px" }}
+            style={{ marginTop: "25px"}}
           />
           <p>
             <strong>{props.login}</strong>
@@ -44,7 +45,7 @@ export const SimpleMenu = (props) => {
         open={Boolean(anchorEl)}
         onClose={handleClose}
       >
-        <MenuItem onClick={() => {}}><NavLink to={"/profile/" + props.userId}>My profile</NavLink></MenuItem>
+        <MenuItem onClick={() => { window.location.reload() }}><NavLink to={"/profile/" + props.userId}>My profile</NavLink></MenuItem>
         <MenuItem onClick={() => {}}><NavLink to={"/settings"}>Settings</NavLink></MenuItem>
         <MenuItem onClick={() => {props.logout()}} ><NavLink to={"/login"}>Logout</NavLink></MenuItem>
       </Menu>

@@ -11,6 +11,7 @@
     background-repeat: no-repeat;
     background-position: 10px 7px;
     padding-left: 30px;
+    border: #4A76A8;
 }
 
 .inputheader input:active, :hover, :focus {
