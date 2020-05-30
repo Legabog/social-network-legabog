@@ -15,6 +15,8 @@ import Login from "./components/Login/Login";
 import { compose } from "redux";
 import Preloader from "./components/common/Preloader/Preloader";
 import MusicList from "./components/Music/MusicList/MusicList";
+import ArtistsList from "./components/Music/MusicList/Artists/Artists";
+import AlbumsList from "./components/Music/MusicList/Albums/Albums";
 
 class App extends React.Component {
   componentDidMount() {
@@ -37,6 +39,8 @@ class App extends React.Component {
             <Route path="/news" component={() => <NewsContainer />} />
             <Route path="/music" component={Music} />
             <Route exact path="/music-list" component={MusicList} />
+            <Route exact path="/music-list/artists" component={ArtistsList} />
+            <Route exact path="/music-list/albums" component={AlbumsList} />
             <Route path="/login" component={Login} />
             <Route path="/settings" component={() => <SettingsContainer />} />
           </div>
