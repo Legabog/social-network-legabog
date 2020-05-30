@@ -1,5 +1,13 @@
 .headerMusicList {
-  margin-left: 25px;
+}
+
+.headerMusicList hr {
+  margin: 0;
+
+}
+
+.headerTitle {
+  padding-top: 80px;
 }
 
 .headerMusicList h1 {

@@ -1,0 +1,40 @@
+
+.bodyArtists hr {
+  margin: 0;
+}
+
+.item1 {
+  height: 60px;
+  display: flex;
+}
+
+.item1:hover {
+  cursor: pointer;
+  width: 980px;
+  background-color: rgb(214, 233, 255);
+}
+
+.item1 h3 {
+  margin-left: 10px;
+  margin-top: 10px;
+  min-width: 930px;
+  color: #4A76A8;
+}
+
+.item1:hover h3 {
+  margin-left: 40px;
+  color: #F62A54;
+}
+
+.item1:hover i {
+  margin-left: -30px;
+  color: #F62A54;
+}
+
+.item1 i {
+  margin-top: 15px;
+}
+
+.lastBlock {
+  height: 20px;
+}
