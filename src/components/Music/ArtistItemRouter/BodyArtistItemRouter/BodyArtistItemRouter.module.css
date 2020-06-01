@@ -1,13 +1,10 @@
-.footerMusicList {
-    margin-top: 40px;
-
-}
-
-.footerMusicList h1 {
-    margin-left: 10px;
-    Color: #4A76A8;
-}
-
+.bodyArtistItemRouter {
+    display: block;
+  }
+  
+  .bodyArtistItemRouter hr {
+    margin: 0;
+  }
 
 .item {
     width: 300px;
@@ -41,9 +38,7 @@
     padding-left: 55px;
     color: rgb(163, 163, 163);
   }
-  
-  
-  
+
   .item img {
     width: 250px;
     margin-left: 55px;
@@ -54,3 +49,4 @@
   .lastBlock {
     height: 60px;
   }
+  
