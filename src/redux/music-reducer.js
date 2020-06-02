@@ -1,48 +1,40 @@
-const PUSH_VIEW = "PUSH_VIEW";
-const POP_VIEW = "POP_VIEW";
-const PUSH_POPUP = "PUSH_POPUP";
-const POP_POPUP = "POP_POPUP";
+const ADD_PLAYLIST = "ADD_PLAYLIST";
 
 let initialState = {
-  stack: [
-    {
-      name: "Music lists",
-      props: {},
-    },
+  createdAlbums: [
+
   ],
-  popupStack: [],
 };
 
-const musicReducer = (state = initialState, action) => {
+const musicRedcuer = (state = initialState, action) => {
   switch (action.type) {
-    case "PUSH_VIEW":
+    case ADD_PLAYLIST:
       return {
         ...state,
-        stack: state.stack.concat(action.view),
+        createdAlbums: [...state.createdAlbums, action.playListData],
       };
-    case "POP_VIEW":
-      return {
-        ...state,
-        stack: state.stack.slice(0, state.stack.length - 1),
-      };
-    case "PUSH_POPUP":
-      return {
-        ...state,
-        popupStack: state.popupStack.concat(action.popup),
-      };
-    case "POP_POPUP":
-      return {
-        ...state,
-        popupStack: state.popupStack.slice(0, state.popupStack.length - 1),
-      };
+
     default:
       return state;
   }
 };
 
-export const pushView = (view) => ({ type: PUSH_VIEW, view });
-export const popView = () => ({ type: POP_VIEW });
-export const pushPopup = (popup) => ({ type: PUSH_POPUP, popup });
-export const popPopup = () => ({ type: POP_POPUP });
+// const createLocalStoragePlaylist = playlist => {
+//   return (dispatch) => {
+//     let playlists = localStorage.playlist
+//       ? JSON.parse(localStorage.playlist)
+//       : {}
 
-export default musicReducer;
+//       playlists[playlist.name] = playlist
+//       localStorage
+//   }
+// }
+
+export const addPlaylist = (img, name, description) => {
+    return {
+        type: ADD_PLAYLIST,
+        playListData: {img, name, description}
+    }
+}
+
+export default musicRedcuer;

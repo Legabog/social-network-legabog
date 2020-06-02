@@ -25,7 +25,7 @@ let reducers = combineReducers({
   headerReducer,
   form: formReducer,
   appReducer,
-  musicReducer
+  musicReducer,
 });
 
 let store = createStore(reducers, applyMiddleware(thunk));
