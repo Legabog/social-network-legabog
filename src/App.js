@@ -21,21 +21,13 @@ import ArtistItemRouter from "./components/Music/ArtistItemRouter/ArtistItemRout
 import MusicPlayer from "./components/Music/MusicPlayer/MusicPlayer";
 import PlayLists from "./components/Music/MusicList/PlayLists/PlayLists";
 import CreateAlbum from "./components/Music/MusicList/CreateAlbum/CreateAlbum";
+import { getMusicAlbumsData } from "./redux/musicalbums-reducer";
 
 class App extends React.Component {
   componentDidMount() {
     this.props.initializeApp();
+    this.props.getMusicAlbumsData();
   }
-
-  state = {
-    artists: [
-      "CAKEBOY",
-      "Mnogoznaal",
-      "Travis Scott",
-      "ZillaKami",
-      "VELIAL SQUAD",
-    ],
-  };
 
   render() {
     if (this.props.initialized) {
@@ -60,25 +52,32 @@ class App extends React.Component {
               <Route exact path="/music-list" component={MusicList} />
               <Route exact path="/music-list/artists" component={ArtistsList} />
               <Route exact path="/music-list/albums" component={AlbumsList} />
-              <Route exact path="/music-list/playlists" component={PlayLists}/>
-              {this.state.artists.map((e) => (
+              <Route exact path="/music-list/playlists" component={PlayLists} />
+              {this.props.musicAlbums.map((e) => (
+                <Route
+                  key={e._id}
+                  exact
+                  path={"/music-list/artists/" + e.author}
+                  component={() => <ArtistItemRouter nameArtist={e.author} />}
+                />
+              ))}
+              { this.props.isFetching ? <Preloader/>: null }
+              { this.props.musicAlbums.map((e) => (
                 <Route
                   key={Math.random()}
                   exact
-                  path={"/music-list/artists/" + e}
-                  component={() => <ArtistItemRouter nameArtist={e} />}
+                  path={"/music-player/" + e.author + "/" + e.title}
+                  component={() => (
+                    <MusicPlayer nameArtist={e.author} albumTitle={e.title} img={e.albumcoverUrl}/>
+                  )}
                 />
               ))}
-              {this.state.artists.map((e) => (
-                <Route
-                  key={Math.random()}
-                  exact
-                  path={"/music-player/" + e + "/nameoftrack"}
-                  component={() => <MusicPlayer nameArtist={e} />}
-                />
-              ))}
-              <Route exact path="/music-list/playlists/create/" component={CreateAlbum}/>
-              <Route exact path="/"/>
+              <Route
+                exact
+                path="/music-list/playlists/create/"
+                component={CreateAlbum}
+              />
+              <Route exact path="/" />
               <Route
                 render={() => {
                   return (
@@ -112,10 +111,16 @@ class App extends React.Component {
 const mapStateToProps = (state) => {
   return {
     initialized: state.appReducer.initialized,
+    musicAlbums: state.musicAlbumsReducer.musicAlbums,
+    isFetching: state.musicAlbumsReducer.isFetching,
+    musicAlbumsSwitcher: state.musicAlbumsReducer.musicAlbumsSwitcher
   };
 };
 
 export default compose(
   withRouter,
-  connect(mapStateToProps, { initializeApp })
+  connect(mapStateToProps, {
+    initializeApp,
+    getMusicAlbumsData,
+  })
 )(App);
