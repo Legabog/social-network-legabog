@@ -1,9 +1,8 @@
 const ADD_PLAYLIST = "ADD_PLAYLIST";
 
 let initialState = {
-  createdAlbums: [
-
-  ],
+  createdAlbums: [],
+  isFetching: true,
 };
 
 const musicRedcuer = (state = initialState, action) => {
@@ -30,11 +29,14 @@ const musicRedcuer = (state = initialState, action) => {
 //   }
 // }
 
+
+
 export const addPlaylist = (img, name, description) => {
     return {
         type: ADD_PLAYLIST,
         playListData: {img, name, description}
     }
 }
+
 
 export default musicRedcuer;
