@@ -1,14 +1,7 @@
 .bodyMusicPlayer {
     display:flex;
   }
-  
-  .bodyMusicPlayer hr {
-    margin: 0;
-  }
 
-  .lastBlock {
-    height: 60px;
-  }
 
   .trackImage {
       margin-left: 30px;
@@ -32,35 +25,5 @@
     margin: 0;
 }
 
-.tracks {
-  margin-top: 30px;
-}
 
-.item {
-  display: flex;
-}
-
-.item:hover {
-  cursor: pointer;
-  background-color: rgb(214, 233, 255);
-}
-
-.item:hover h6{
-  color: #F62A54;  
-}
-
-.item:hover i {
-  color: #F62A54;  
-}
-
-.item h6 {
-  font-size: 160%;
-  width: 580px;
-}
-
-.item i {
-  color: #4A76A8;
-  font-size: 130%;
-  margin-top: 10px;
-}
   

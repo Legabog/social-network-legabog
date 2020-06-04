@@ -2,24 +2,26 @@ import React from "react";
 import classes from "./BodyArtists.module.css";
 import ItemArtists from "./ItemArtists/ItemArtists";
 
-class BodyArtists extends React.Component {
-  render() {
-    return (
-      <div className={classes.bodyArtists}>
-        {[
-          "CAKEBOY",
-          "Mnogoznaal",
-          "Travis Scott",
-          "ZillaKami",
-          "VELIAL SQUAD",
-        ].map((e) => (
-          <ItemArtists key={Math.random()} nameArtist={e} />
-        ))}
+const BodyArtists = (props) => {
+  let resultArray = []
 
-        <div className={classes.lastBlock}></div>
-      </div>
-    );
-  }
-}
+  props.musicAlbums.map(e => {
+    if (!resultArray.includes(e.author)) {
+      resultArray.push(e.author)
+    }
+  })
+
+  return (
+    <div className={classes.bodyArtists}>
+      {resultArray.map((e) => {
+        return <ItemArtists key={Math.random()} nameArtist={e} tracks={props.musicAlbums.map(e => e.tracks)}/>
+      }
+        
+      )}
+
+      <div className={classes.lastBlock}></div>
+    </div>
+  );
+};
 
 export default BodyArtists;

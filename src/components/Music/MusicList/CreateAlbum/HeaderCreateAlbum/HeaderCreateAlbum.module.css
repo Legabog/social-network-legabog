@@ -81,9 +81,23 @@
       display: flex;
   }
 
-  .addPhoto:hover {
+  .addPhoto:hover label {
     filter: brightness(0.95);
     cursor: pointer;
+}
+.addPhoto {
+  width: 250px;
+  height: 250px;
+
+}
+.addPhoto img {
+  width: 250px;
+  height: 250px;
+  
+}
+
+.addPhoto input {
+  display: none;
 }
 
   .inputs2 {
@@ -93,9 +107,9 @@
 .input1 {
     border: none;
     font-size: 250%;
-    width: 500px;
+    width: 650px;
     height: 60px;
-    margin-left: 20px;
+    margin-left: 50px;
 }
 
 .input1:hover {
@@ -111,9 +125,9 @@
 .input2 {
     border: none;
     font-size: 250%;
-    width: 500px;
+    width: 650px;
     height: 60px;
-    margin-left: 20px;
+    margin-left: 50px;
     margin-top: 80px;
 }
 

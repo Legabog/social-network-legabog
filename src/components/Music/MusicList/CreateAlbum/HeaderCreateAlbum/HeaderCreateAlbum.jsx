@@ -5,18 +5,37 @@ import AddPhoto from "../../../../../assets/apple theme/photo_add.png";
 
 class HeaderCreateAlbum extends React.Component {
   state = {
-    createPlayListPhoto: AddPhoto,
-    input1: "",
-    input2: "",
-    newPlayLists: {},
+    img: AddPhoto,
+    name: "",
+    description: "",
   };
 
+
+
   onChangeHandlerInput1 = (e) => {
-    this.setState({ input1: e.target.value });
+    this.setState({ name: e.target.value });
   };
 
   onChangeHandlerInput2 = (e) => {
-    this.setState({ input2: e.target.value });
+    this.setState({ description: e.target.value });
+  };
+
+  handleImageUpload = (img) => {
+    this.setState({  img });
+  };
+
+  base64Encode = (img) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(img);
+    reader.onload = () => this.handleImageUpload(reader.result);
+    reader.onerror = (error) => {
+      console.log("Error", error);
+    };
+  };
+
+  sendImage = (img) => {
+    this.base64Encode(img);
+    this.setState({ img: window.URL.createObjectURL(img) });
   };
 
   render() {
@@ -29,19 +48,39 @@ class HeaderCreateAlbum extends React.Component {
           </div>
         </NavLink>
 
-        <div className={classes.buttonDone}>
-          <h3>Done</h3>
-        </div>
+        <NavLink to="/music-list/playlists/">
+          <div
+            className={classes.buttonDone}
+            onClick={() => {
+              // ----------------------Store
+              this.props.createPlaylist(
+                this.state.img,
+                this.state.name,
+                this.state.description
+              );
+              // ------------------------LocalStore
+              // JSON.parse(localStorage.playlists) 
+              //   ? localStorage.playlists.push({image: this.state.img, name: this.state.name, decription: this.state.description})
+              //   : localStorage.playlists = JSON.stringify({image: this.state.img, name: this.state.name, decription: this.state.description})
+              // localStorage.playlists = JSON.stringify([{image: this.state.img, name: this.state.name, decription: this.state.description}])
+            }}
+          >
+            <h3>Done</h3>
+          </div>
+        </NavLink>
+
         <h1>Create new playlist</h1>
         <div className={classes.inputs}>
-          <div className={classes.addPhoto} onClick={() => {}}>
-            <img src={this.state.createPlayListPhoto} alt="description"></img>
+          <div className={classes.addPhoto}>
+            <label htmlFor="image-loader">
+              <img src={this.state.img} alt="description" />
+            </label>
 
             <input
               type="file"
-              onChange={(e) =>
-                this.setState({ createPlayListPhoto: e.target.value })
-              }
+              id="image-loader"
+              accept="image/x-png, image/gif, image/jpeg, image/jpg"
+              onChange={(e) => this.sendImage(e.target.files[0])}
             ></input>
           </div>
           <div className={classes.inputs2}>

@@ -12,6 +12,11 @@
     display: flex;
 }
 
+.createPlayList img {
+  width: 200px;
+  height: 200px;
+}
+
 .createPlayList:hover {
     cursor: pointer;
     background-color: rgb(214, 233, 255);

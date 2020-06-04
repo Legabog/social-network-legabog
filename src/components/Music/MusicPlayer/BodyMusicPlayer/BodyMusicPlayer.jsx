@@ -1,41 +1,27 @@
 import React from "react";
 import classes from "./BodyMusicPlayer.module.css";
-import DefaultMusic from "../../../../assets/apple theme/music.jpg"
+import DefaultMusic from "../../../../assets/apple theme/music.jpg";
+import TracksItem from "./TrackItem/TrackItem";
 
-class BodyMusicPlayer extends React.Component {
-  render() {
-    return (
-      <div className={classes.bodyMusicPlayer}>
-        <div className={classes.trackImage}>
-          <img
-            src={DefaultMusic}
-            alt="description"
-          />
-        </div>
-        <div className={classes.trackArtist}>
-          <h1>Name of track/Album</h1>
-          <h4>{this.props.nameArtist}</h4>
-          <div className={classes.tracks}>
-            <div className={classes.item}>
-              <h6>Track 1</h6>
-              <i className="fas fa-ellipsis-h"></i>
-            </div>
-            <hr />
-            <div className={classes.item}>
-              <h6>Track 2</h6>
-              <i className="fas fa-ellipsis-h"></i>
-            </div>
-            <hr />
-            <div className={classes.item}>
-              <h6>Track 3</h6>
-              <i className="fas fa-ellipsis-h"></i>
-            </div>
-            <hr />
-          </div>
-        </div>
+const BodyMusicPlayer = (props) => {
+  return (
+    <div className={classes.bodyMusicPlayer}>
+      <div className={classes.trackImage}>
+        <img src={props.img || DefaultMusic} alt="description" />
       </div>
-    );
-  }
-}
+      <div className={classes.trackArtist}>
+        <h1>{props.albumTitle}</h1>
+        <h4>{props.nameArtist}</h4>
+
+        {props.musicAlbums.map((e) => {
+          if (e.title === props.albumTitle && e.author === props.nameArtist) {
+            return <TracksItem key={Math.random()} tracks={e.tracks} />;
+          }
+        })}
+      </div>
+      <div className={classes.lastBlock}></div>
+    </div>
+  );
+};
 
 export default BodyMusicPlayer;
