@@ -11,6 +11,7 @@
     "antd": "^4.2.5",
     "axios": "^0.19.2",
     "materialize-css": "^1.0.0-rc.2",
+    "mongoose": "^5.9.17",
     "node": "^14.3.0",
     "puppeteer": "^3.1.0",
     "puppeteer-core": "^3.1.0",
@@ -25,6 +26,7 @@
     "redux-form": "^8.3.5",
     "redux-thunk": "^2.3.0",
     "slick-carousel": "^1.8.1",
+    "styled-components": "^5.1.1",
     "unirest": "^0.6.0",
     "ws": "^7.3.0"
   },
@@ -37,6 +39,7 @@
   "eslintConfig": {
     "extends": "react-app"
   },
+  "proxy": "http://localhost:4000",
   "browserslist": {
     "production": [
       ">0.2%",
