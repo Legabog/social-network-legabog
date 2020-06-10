@@ -1,42 +1,33 @@
 const ADD_PLAYLIST = "ADD_PLAYLIST";
 
 let initialState = {
-  createdAlbums: [],
+  createdPlaylists: [],
   isFetching: true,
 };
 
 const musicRedcuer = (state = initialState, action) => {
   switch (action.type) {
-    case ADD_PLAYLIST:
+    case ADD_PLAYLIST: {
+      let newPlaylist = {
+        name: action.name,
+        description: action.description
+      } 
       return {
         ...state,
-        createdAlbums: [...state.createdAlbums, action.playListData],
+        createdPlaylists: [...state.createdPlaylists, newPlaylist],
       };
-
+    }
     default:
       return state;
   }
 };
 
-// const createLocalStoragePlaylist = playlist => {
-//   return (dispatch) => {
-//     let playlists = localStorage.playlist
-//       ? JSON.parse(localStorage.playlist)
-//       : {}
 
-//       playlists[playlist.name] = playlist
-//       localStorage
-//   }
-// }
-
-
-
-export const addPlaylist = (img, name, description) => {
-    return {
-        type: ADD_PLAYLIST,
-        playListData: {img, name, description}
-    }
-}
-
+export const addPlaylist = (name, description) => {
+  return {
+    type: ADD_PLAYLIST,
+    name, description
+  };
+};
 
 export default musicRedcuer;

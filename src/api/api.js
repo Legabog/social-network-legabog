@@ -43,16 +43,16 @@ export const userAPI = {
 
   login(email, password, rememberMe = false, captcha = null) {
     return instance
-      .post(`/auth/login`, { email, password, rememberMe, captcha})
+      .post(`/auth/login`, { email, password, rememberMe, captcha })
       .then((response) => {
-        return response.data
+        return response.data;
       });
   },
 
   getCaptcha() {
-    return instance.get(`security/get-captcha-url`).then(response => {
-      return response.data
-    })
+    return instance.get(`security/get-captcha-url`).then((response) => {
+      return response.data;
+    });
   },
 
   logout() {
@@ -77,6 +77,18 @@ export const userAPI = {
     return instance.post(`follow/${id}`).then((responce) => {
       return responce.data;
     });
+  },
+
+  getMusicAlbums() {
+    return axios.get("http://localhost:4000/musicalbums/get-musicalbums")
+    .then((response) => {
+      console.log(response.data)
+      return response.data
+    })
+  },
+
+  deleteMusicAlbum(id) {
+    return axios.delete(`http://localhost:4000/musicalbums/delete-album/${id}`)
   },
 
   getNews(country, category) {

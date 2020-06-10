@@ -3,13 +3,15 @@ import { userAPI } from "../api/api";
 const SET_MUSIC_ALBUMS_DATA = "ADD_PLAYLIST";
 const TOGGLE_IS_FETCHING = "TOGGLE_IS_FETCHING";
 const SWITCHER = "SWITCHER";
-const PUSH_ALBUM_TO_RECENTLY_PLAYED = "PUSH_ALBUM_TO_RECENTLY_PLAYED"
+const PUSH_ALBUM_TO_RECENTLY_PLAYED = "PUSH_ALBUM_TO_RECENTLY_PLAYED";
+const SWITCH_DISABLER = "SWITCH_DISABLER";
 
 let initialState = {
   musicAlbums: [],
   isFetching: true,
   musicAlbumsSwitcher: 1,
-  recentlyPlayed: []
+  recentlyPlayed: [],
+  disabler: false,
 };
 
 const musicAlbumsReducer = (state = initialState, action) => {
@@ -23,6 +25,18 @@ const musicAlbumsReducer = (state = initialState, action) => {
       return {
         ...state,
         isFetching: action.isFetching,
+      };
+
+    case SWITCH_DISABLER: {
+      return {
+        ...state,
+        disabler: action.disable,
+      };
+    }
+    case PUSH_ALBUM_TO_RECENTLY_PLAYED:
+      return {
+        ...state,
+        recentlyPlayed: [...state.recentlyPlayed, action.data],
       };
 
     case SWITCHER:
@@ -43,10 +57,24 @@ export const setMusicAlbumsData = (payload) => {
   };
 };
 
+export const pushAlbumToRecentlyPlayed = (img, title, author) => {
+  return {
+    type: PUSH_ALBUM_TO_RECENTLY_PLAYED,
+    data: { img, title, author },
+  };
+};
+
 export const toggleIsFetching = (isFetching) => {
   return {
     type: TOGGLE_IS_FETCHING,
     isFetching,
+  };
+};
+
+export const switchDisabler = (disable) => {
+  return {
+    type: SWITCH_DISABLER,
+    disable,
   };
 };
 
@@ -56,6 +84,19 @@ export const toggleSwitcher = (switcher) => {
     switcher,
   };
 };
+
+export const pushToRecentlyPlayed = (img, title, author) => {
+  return async (dispatch) => {
+    dispatch(pushAlbumToRecentlyPlayed(img, title, author));
+  };
+};
+
+// export const getCaptchaUrl = () => async (dispatch) => {
+//   const response = await userAPI.getCaptcha();
+//   const captchaUrl = response.url;
+
+//   dispatch(getCaptchaUrlSuccess(captchaUrl));
+// };
 
 export const getMusicAlbumsData = () => {
   return (dispatch) => {

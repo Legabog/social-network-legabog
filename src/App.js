@@ -22,6 +22,8 @@ import MusicPlayer from "./components/Music/MusicPlayer/MusicPlayer";
 import PlayLists from "./components/Music/MusicList/PlayLists/PlayLists";
 import CreateAlbum from "./components/Music/MusicList/CreateAlbum/CreateAlbum";
 import { getMusicAlbumsData } from "./redux/musicalbums-reducer";
+import ErrorRoute from "./components/common/ErrorRoute/ErrorRoute";
+import { addPlaylist } from "./redux/music-reducer"
 
 class App extends React.Component {
   componentDidMount() {
@@ -49,10 +51,19 @@ class App extends React.Component {
 
               {/* -----------------------Player Routes----------------- */}
               <Route path="/music" component={Music} />
-              <Route exact path="/music-list" component={MusicList} />
+              <Route exact path="/music-list" component={() => <MusicList/>} />
               <Route exact path="/music-list/artists" component={ArtistsList} />
               <Route exact path="/music-list/albums" component={AlbumsList} />
-              <Route exact path="/music-list/playlists" component={PlayLists} />
+              <Route
+                exact
+                path="/music-list/playlists"
+                component={() => <PlayLists />}
+              />
+              <Route
+                exact
+                path="/music-list/playlists/create"
+                component={() => <CreateAlbum />}
+              />
               {this.props.musicAlbums.map((e) => (
                 <Route
                   key={e._id}
@@ -61,43 +72,23 @@ class App extends React.Component {
                   component={() => <ArtistItemRouter nameArtist={e.author} />}
                 />
               ))}
-              { this.props.isFetching ? <Preloader/>: null }
-              { this.props.musicAlbums.map((e) => (
+              {this.props.isFetching ? <Preloader /> : null}
+              {this.props.musicAlbums.map((e) => (
                 <Route
                   key={Math.random()}
                   exact
                   path={"/music-player/" + e.author + "/" + e.title}
                   component={() => (
-                    <MusicPlayer nameArtist={e.author} albumTitle={e.title} img={e.albumcoverUrl}/>
+                    <MusicPlayer
+                      nameArtist={e.author}
+                      albumTitle={e.title}
+                      img={e.albumcoverUrl}
+                    />
                   )}
                 />
               ))}
-              <Route
-                exact
-                path="/music-list/playlists/create/"
-                component={CreateAlbum}
-              />
               <Route exact path="/" />
-              <Route
-                render={() => {
-                  return (
-                    <div className={classes.error}>
-                      <div className={classes.errorIcon}>
-                        <i className="fas fa-exclamation-triangle"></i>
-                      </div>
-                      <div className={classes.errorDescription}>
-                        <h2>Oops, error</h2>
-                        <div className={classes.errorNumber}>
-                          <h1>404</h1>
-                        </div>
-                        <hr />
-                        <h2>Page not found !!!</h2>
-                        <div className={classes.lastBlock}></div>
-                      </div>
-                    </div>
-                  );
-                }}
-              />
+              <Route render={() => <ErrorRoute />} />
             </Switch>
           </div>
         </div>
@@ -113,7 +104,8 @@ const mapStateToProps = (state) => {
     initialized: state.appReducer.initialized,
     musicAlbums: state.musicAlbumsReducer.musicAlbums,
     isFetching: state.musicAlbumsReducer.isFetching,
-    musicAlbumsSwitcher: state.musicAlbumsReducer.musicAlbumsSwitcher
+    recentlyPlayed: state.musicAlbumsReducer.recentlyPlayed,
+    musicAlbumsSwitcher: state.musicAlbumsReducer.musicAlbumsSwitcher,
   };
 };
 
@@ -122,5 +114,6 @@ export default compose(
   connect(mapStateToProps, {
     initializeApp,
     getMusicAlbumsData,
+    addPlaylist
   })
 )(App);
