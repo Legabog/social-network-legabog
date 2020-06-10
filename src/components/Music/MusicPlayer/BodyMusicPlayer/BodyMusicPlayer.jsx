@@ -7,16 +7,20 @@ const BodyMusicPlayer = (props) => {
   return (
     <div className={classes.bodyMusicPlayer}>
       <div className={classes.trackImage}>
-        <img src={props.img || DefaultMusic} alt="description" />
+        <img src={props.img || DefaultMusic} alt="description"/>
       </div>
       <div className={classes.trackArtist}>
-        <h1>{props.albumTitle}</h1>
-        <h4>{props.nameArtist}</h4>
+        <h1>{props.title}</h1>
+        <h4>{props.author}</h4>
 
         {props.musicAlbums.map((e) => {
-          if (e.title === props.albumTitle && e.author === props.nameArtist) {
-            return <TracksItem key={Math.random()} tracks={e.tracks} />;
+          if (e.title === props.title && e.author === props.author) {
+            return (
+              <TracksItem key={Math.random()} tracks={e.tracks} {...props} onClick={() => console.log("Qwe")} />
+            );
           }
+
+          return null;
         })}
       </div>
       <div className={classes.lastBlock}></div>

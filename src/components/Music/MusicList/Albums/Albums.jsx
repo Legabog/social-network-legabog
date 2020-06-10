@@ -10,7 +10,6 @@ import {toggleSwitcher} from "../../../../redux/musicalbums-reducer"
 class AlbumsList extends React.Component {
   componentDidMount() {
     this.props.getMusicAlbumsData();
-    // this.props.toggleSwitcher(2);
   }
 
   render() {

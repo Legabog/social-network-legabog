@@ -10,8 +10,6 @@ class HeaderCreateAlbum extends React.Component {
     description: "",
   };
 
-
-
   onChangeHandlerInput1 = (e) => {
     this.setState({ name: e.target.value });
   };
@@ -41,28 +39,24 @@ class HeaderCreateAlbum extends React.Component {
   render() {
     return (
       <div className={classes.headerCreateAlbum}>
-        <NavLink to="/music-list/playlists/">
+        <NavLink to="/music-list/playlists">
           <div className={classes.buttonBack}>
             <i className="fas fa-chevron-left"></i>
             <h3>Cancel</h3>
           </div>
         </NavLink>
 
-        <NavLink to="/music-list/playlists/">
+        <NavLink to="/music-list/playlists">
           <div
             className={classes.buttonDone}
             onClick={() => {
-              // ----------------------Store
-              this.props.createPlaylist(
-                this.state.img,
-                this.state.name,
-                this.state.description
-              );
+            
+              
+            // localStorage.playLists = JSON.parse(localStorage.playLists)
               // ------------------------LocalStore
-              // JSON.parse(localStorage.playlists) 
-              //   ? localStorage.playlists.push({image: this.state.img, name: this.state.name, decription: this.state.description})
-              //   : localStorage.playlists = JSON.stringify({image: this.state.img, name: this.state.name, decription: this.state.description})
-              // localStorage.playlists = JSON.stringify([{image: this.state.img, name: this.state.name, decription: this.state.description}])
+              // JSON.parse(localStorage.playLists) 
+              //   ? localStorage.playLists.playLists.push({image: this.state.img, name: this.state.name, decription: this.state.description})
+              //   : localStorage.playLists = JSON.stringify({image: this.state.img, name: this.state.name, decription: this.state.description})
             }}
           >
             <h3>Done</h3>

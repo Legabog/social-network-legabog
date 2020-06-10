@@ -9,7 +9,6 @@ class ArtistsList extends React.Component {
     return (
       <div className={classes.artists}>
         <HeaderArtists />
-
         <BodyArtists musicAlbums={this.props.musicAlbums}/>
       </div>
     );

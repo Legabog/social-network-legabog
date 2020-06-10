@@ -5,12 +5,6 @@ import { NavLink } from "react-router-dom";
 import PlayList from "../PlayList/PlayList";
 
 const BodyPlayLists = (props) => {
-  //  componentDidMount() {
-  //   localStorage.playlists = JSON.stringify(this.props.createdAlbums)
-  //   console.log(localStorage.playlists)
-  // console.log(JSON.parse(localStorage.playlists))
-  //  }
-
   return (
     <div className={classes.bodyPlayLists}>
       <NavLink to="/music-list/playlists/create">
@@ -21,16 +15,8 @@ const BodyPlayLists = (props) => {
         <hr />
       </NavLink>
 
-      {!props.createdAlbums === false
-        ? null
-        : props.createdAlbums.map((e) => (
-            <PlayList
-              name={e.name}
-              img={e.img}
-              description={e.description}
-              key={Math.random()}
-            />
-          ))}
+      
+
       <div className={classes.lastBlock}></div>
     </div>
   );
