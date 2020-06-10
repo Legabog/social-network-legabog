@@ -30,7 +30,9 @@ const ProfileInfo = (props) => {
               height: "40px",
               marginLeft: "20px",
               fontSize: "130%",
-              marginTop: "20px"
+              marginTop: "20px",
+              background: "#4A76A8",
+              border: "#4A76A8"
             }}
           >
             Write a message
@@ -43,10 +45,12 @@ const ProfileInfo = (props) => {
               height: "40px",
               marginLeft: "5px",
               fontSize: "130%",
-              marginTop: "20px"
+              marginTop: "20px",
+              background: "#e5ebf1",
+              border: "#e5ebf1"
             }}
           >
-            <i className="fas fa-cog"></i>
+            <i className="fas fa-cog" style={{color: "#4A76A8"}}></i>
           </button>
           <div className={classes.posts}>
           <MyPostsContainer />

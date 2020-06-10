@@ -34,6 +34,8 @@ const AddMyPostForm = (props) => {
             height: "40px",
             fontSize: "160%",
             marginTop: "20px",
+            background: "#4A76A8",
+            border: "#4A76A8"
           }}
         >
           Post message

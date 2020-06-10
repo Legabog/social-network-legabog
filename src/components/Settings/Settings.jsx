@@ -1,6 +1,7 @@
 import React from "react";
 import classes from "./Settings.module.css";
 import FlagOfCountry from "../common/FlagOfCountry/FlagOfCountry";
+import { userAPI } from "../../api/api";
 
 const Settings = (props) => {
   return (
@@ -24,7 +25,9 @@ const Settings = (props) => {
           ))}
         </div>
         <div className={classes.categoriesSettings}>
-          <button className={classes.categoriesbuttons}>business</button>
+          <button className={classes.categoriesbuttons} onClick={() => {
+            userAPI.deleteMusicAlbum("5ed8db77b939c242b024f4dc")
+          }}>business</button>
           <button className={classes.categoriesbuttons}>entertainment</button>
           <button className={classes.categoriesbuttons}>health</button>
           <button className={classes.categoriesbuttons}>science</button>

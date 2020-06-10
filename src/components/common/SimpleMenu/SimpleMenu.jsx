@@ -46,6 +46,7 @@ export const SimpleMenu = (props) => {
         onClose={handleClose}
       >
         <MenuItem onClick={() => { window.location.reload() }}><NavLink to={"/profile/" + props.userId}>My profile</NavLink></MenuItem>
+        <MenuItem onClick={() => {}}><NavLink to={"/music"}>Music</NavLink></MenuItem>
         <MenuItem onClick={() => {}}><NavLink to={"/settings"}>Settings</NavLink></MenuItem>
         <MenuItem onClick={() => {props.logout()}} ><NavLink to={"/login"}>Logout</NavLink></MenuItem>
       </Menu>

@@ -38,12 +38,12 @@ let Users = (props) => {
                   />
                 </NavLink>
                 <span>
-                  <p>
+                  <h4>
                     <strong>{e.name}</strong>
-                  </p>
+                  </h4>
                   <NavLink to={"/profile/" + e.id}>
                     <p>
-                      <strong>Link to profile</strong>
+                      Link to profile
                     </p>
                   </NavLink>
                   <p>{e.status || "Нет статуса"}</p>
@@ -73,6 +73,7 @@ let Users = (props) => {
                 )}
               </div>
             </span>
+            <hr/>
           </div>
         ))}
       </div>

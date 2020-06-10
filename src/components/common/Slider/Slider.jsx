@@ -88,7 +88,7 @@ export default class SimpleSlider extends React.Component {
       customPaging: (i) => {
         return (
           <div className={classes.dotsImg}>
-            <a>
+            <a href="123">
               <img src={this.state.items[i].photoUrl} alt="description" />
             </a>
           </div>
