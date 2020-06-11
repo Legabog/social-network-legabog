@@ -23,7 +23,8 @@ import PlayLists from "./components/Music/MusicList/PlayLists/PlayLists";
 import CreateAlbum from "./components/Music/MusicList/CreateAlbum/CreateAlbum";
 import { getMusicAlbumsData } from "./redux/musicalbums-reducer";
 import ErrorRoute from "./components/common/ErrorRoute/ErrorRoute";
-import { addPlaylist } from "./redux/music-reducer"
+import { addToPlayList } from "./redux/musicalplaylists-reducer";
+import OwnPlayListsRouter from "./components/Music/OwnPlayListsRouter/OwnPlayListsRouter";
 
 class App extends React.Component {
   componentDidMount() {
@@ -46,14 +47,22 @@ class App extends React.Component {
               <Route path="/dialogs" render={() => <DialogsContainer />} />
               <Route path="/users" render={() => <UsersContainer />} />
               <Route path="/news" component={() => <NewsContainer />} />
-              <Route path="/login" component={Login} />
+              <Route path="/login" component={() => <Login />} />
               <Route path="/settings" component={() => <SettingsContainer />} />
 
               {/* -----------------------Player Routes----------------- */}
-              <Route path="/music" component={Music} />
-              <Route exact path="/music-list" component={() => <MusicList/>} />
-              <Route exact path="/music-list/artists" component={ArtistsList} />
-              <Route exact path="/music-list/albums" component={AlbumsList} />
+              <Route path="/music" component={() => <Music />} />
+              <Route exact path="/music-list" component={() => <MusicList />} />
+              <Route
+                exact
+                path="/music-list/artists"
+                component={() => <ArtistsList />}
+              />
+              <Route
+                exact
+                path="/music-list/albums"
+                component={() => <AlbumsList />}
+              />
               <Route
                 exact
                 path="/music-list/playlists"
@@ -62,22 +71,24 @@ class App extends React.Component {
               <Route
                 exact
                 path="/music-list/playlists/create"
-                component={() => <CreateAlbum />}
+                component={() => (
+                  <CreateAlbum addToPlayList={this.props.addToPlayList} />
+                )}
               />
               {this.props.musicAlbums.map((e) => (
                 <Route
                   key={e._id}
                   exact
-                  path={"/music-list/artists/" + e.author}
+                  path={`/music-list/artists/${e.author}`}
                   component={() => <ArtistItemRouter nameArtist={e.author} />}
                 />
               ))}
-              {this.props.isFetching ? <Preloader /> : null}
+              {this.props.Fetching ? <Preloader /> : null}
               {this.props.musicAlbums.map((e) => (
                 <Route
                   key={Math.random()}
                   exact
-                  path={"/music-player/" + e.author + "/" + e.title}
+                  path={`/music-player/${e.author}/${e.title}`}
                   component={() => (
                     <MusicPlayer
                       nameArtist={e.author}
@@ -85,6 +96,14 @@ class App extends React.Component {
                       img={e.albumcoverUrl}
                     />
                   )}
+                />
+              ))}
+              {this.props.ownPlayLists.map((e) => (
+                <Route
+                  key={Math.random()}
+                  exact
+                  path={`/music-playlists/${e.name}/`}
+                  component={() => <OwnPlayListsRouter />}
                 />
               ))}
               <Route exact path="/" />
@@ -103,9 +122,10 @@ const mapStateToProps = (state) => {
   return {
     initialized: state.appReducer.initialized,
     musicAlbums: state.musicAlbumsReducer.musicAlbums,
-    isFetching: state.musicAlbumsReducer.isFetching,
+    Fetching: state.musicAlbumsReducer.Fetching,
     recentlyPlayed: state.musicAlbumsReducer.recentlyPlayed,
     musicAlbumsSwitcher: state.musicAlbumsReducer.musicAlbumsSwitcher,
+    ownPlayLists: state.musicPlayListReducer.ownPlayLists,
   };
 };
 
@@ -114,6 +134,6 @@ export default compose(
   connect(mapStateToProps, {
     initializeApp,
     getMusicAlbumsData,
-    addPlaylist
+    addToPlayList,
   })
 )(App);

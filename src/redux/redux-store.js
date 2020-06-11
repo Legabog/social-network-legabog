@@ -9,8 +9,8 @@ import settingsReducer from "./settings-reducer";
 import headerReducer from "./header-reducer";
 import friendslistReducer from "./friendslist-reducer";
 import appReducer from "./app-reducer"
-import musicReducer from "./music-reducer"
 import musicAlbumsReducer from "./musicalbums-reducer"
+import musicPlayListReducer from "./musicalplaylists-reducer"
 import thunk from "redux-thunk";
 import { reducer as formReducer } from 'redux-form'
 
@@ -26,7 +26,7 @@ let reducers = combineReducers({
   headerReducer,
   form: formReducer,
   appReducer,
-  musicReducer,
+  musicPlayListReducer,
   musicAlbumsReducer
 });
 

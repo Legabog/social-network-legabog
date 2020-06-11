@@ -74,8 +74,8 @@ export const getNews = (country, category) => {
     userAPI
       .getNews(country, category)
       .then((response) => {
-        dispatch(toggleIsFetching(false));
         dispatch(setNewsData(response.articles))
+        dispatch(toggleIsFetching(false));
       })
   };
 };

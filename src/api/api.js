@@ -82,7 +82,6 @@ export const userAPI = {
   getMusicAlbums() {
     return axios.get("http://localhost:4000/musicalbums/get-musicalbums")
     .then((response) => {
-      console.log(response.data)
       return response.data
     })
   },

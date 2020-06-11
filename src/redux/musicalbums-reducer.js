@@ -1,17 +1,20 @@
 import { userAPI } from "../api/api";
 
-const SET_MUSIC_ALBUMS_DATA = "ADD_PLAYLIST";
-const TOGGLE_IS_FETCHING = "TOGGLE_IS_FETCHING";
+const SET_MUSIC_ALBUMS_DATA = "SET_MUSIC_ALBUMS_DATA";
+const TOGGLE_FETCHING = "TOGGLE_FETCHING";
 const SWITCHER = "SWITCHER";
 const PUSH_ALBUM_TO_RECENTLY_PLAYED = "PUSH_ALBUM_TO_RECENTLY_PLAYED";
-const SWITCH_DISABLER = "SWITCH_DISABLER";
+const PUSH_TITLE_TO_DISABLED_ARRAY = "PUSH_TITLE_TO_DISABLED_ARRAY";
+const PUSH_AUTHOR_TO_DISABLED_ARRAY = "PUSH_AUTHOR_TO_DISABLED_ARRAY";
+
 
 let initialState = {
   musicAlbums: [],
-  isFetching: true,
+  Fetching: true,
   musicAlbumsSwitcher: 1,
   recentlyPlayed: [],
-  disabler: false,
+  disabledTitles: [],
+  disabledAuthors: [],
 };
 
 const musicAlbumsReducer = (state = initialState, action) => {
@@ -21,22 +24,27 @@ const musicAlbumsReducer = (state = initialState, action) => {
         ...state,
         musicAlbums: action.payload,
       };
-    case TOGGLE_IS_FETCHING:
+    case TOGGLE_FETCHING:
       return {
         ...state,
-        isFetching: action.isFetching,
+        Fetching: action.Fetching,
       };
-
-    case SWITCH_DISABLER: {
-      return {
-        ...state,
-        disabler: action.disable,
-      };
-    }
     case PUSH_ALBUM_TO_RECENTLY_PLAYED:
       return {
         ...state,
         recentlyPlayed: [...state.recentlyPlayed, action.data],
+      };
+
+    case PUSH_TITLE_TO_DISABLED_ARRAY:
+      return {
+        ...state,
+        disabledTitles: [...state.disabledTitles, action.title],
+      };
+
+    case PUSH_AUTHOR_TO_DISABLED_ARRAY:
+      return {
+        ...state,
+        disabledAuthors: [...state.disabledAuthors, action.author],
       };
 
     case SWITCHER:
@@ -64,17 +72,24 @@ export const pushAlbumToRecentlyPlayed = (img, title, author) => {
   };
 };
 
-export const toggleIsFetching = (isFetching) => {
+export const pushTitleToDisabledArray = (title) => {
   return {
-    type: TOGGLE_IS_FETCHING,
-    isFetching,
+    type: PUSH_TITLE_TO_DISABLED_ARRAY,
+    title,
   };
 };
 
-export const switchDisabler = (disable) => {
+export const pushAuthorToDisabledArray = (author) => {
   return {
-    type: SWITCH_DISABLER,
-    disable,
+    type: PUSH_AUTHOR_TO_DISABLED_ARRAY,
+    author,
+  };
+};
+
+export const toggleFetching = (Fetching) => {
+  return {
+    type: TOGGLE_FETCHING,
+    Fetching,
   };
 };
 
@@ -88,22 +103,17 @@ export const toggleSwitcher = (switcher) => {
 export const pushToRecentlyPlayed = (img, title, author) => {
   return async (dispatch) => {
     dispatch(pushAlbumToRecentlyPlayed(img, title, author));
+    dispatch(pushTitleToDisabledArray(title))
+    dispatch(pushAuthorToDisabledArray(author))
   };
 };
 
-// export const getCaptchaUrl = () => async (dispatch) => {
-//   const response = await userAPI.getCaptcha();
-//   const captchaUrl = response.url;
-
-//   dispatch(getCaptchaUrlSuccess(captchaUrl));
-// };
-
 export const getMusicAlbumsData = () => {
   return (dispatch) => {
-    dispatch(toggleIsFetching(true));
+    dispatch(toggleFetching(true));
     userAPI.getMusicAlbums().then((response) => {
-      dispatch(toggleIsFetching(false));
       dispatch(setMusicAlbumsData(response));
+      dispatch(toggleFetching(false));
     });
   };
 };
