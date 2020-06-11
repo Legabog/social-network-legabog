@@ -1,0 +1,30 @@
+.formControll.error input,
+.formControll.error textarea {
+    border: 3px solid red;
+}
+
+.formControll.error span {
+    color: red
+}
+
+.formSummaryError { 
+    display: inline-block;
+    width: fit-content; 
+    border-radius: 10px;
+    border: 3px solid red;
+    font-size: 130%;
+    margin-bottom: 20px;
+    padding: 5px;
+    background-color: #d8aaaa;
+}
+
+.formSummaryError h3 { 
+    color: red
+}
+
+.formSummaryError i { 
+    color: yellow
+}
+.formSummaryError span { 
+    color: #fff
+}
