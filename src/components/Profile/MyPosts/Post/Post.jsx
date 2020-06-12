@@ -22,14 +22,16 @@ class Post extends React.Component {
 
         <div className={classes.likes}>
           <h4>{this.props.message}</h4>
-          <div
-            className={classes.likesCount}
-            onClick={() => {
-              this.likeHandler();
-            }}
-          >
-            <i className="fas fa-heart"></i>
-            <span><strong> {this.state.likes}</strong></span>
+          <div className={classes.likesCount}>
+            <i
+              className="fas fa-heart"
+              onClick={() => {
+                this.likeHandler();
+              }}
+            ></i>
+            <span>
+              <strong> {this.state.likes}</strong>
+            </span>
           </div>
         </div>
       </div>
